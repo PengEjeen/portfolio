@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ParticleBackground from '../components/ParticleBackground';
+import FloatingAstronaut from '../components/FloatingAstronaut';
 
 function Home() {
   const [typedText, setTypedText] = useState('');
@@ -45,7 +46,7 @@ function Home() {
         {/* HERO SECTION - 전체 화면 */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617] p-0">
           {/* 움직이는 그라디언트 라인 배경 */}
-          <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 opacity-20 pointer-events-none">
             <div className="gradient-wave" />
             <div className="gradient-wave" style={{ animationDelay: '2s' }} />
             <div className="gradient-wave" style={{ animationDelay: '4s' }} />
@@ -53,6 +54,9 @@ function Home() {
 
           {/* 파티클 배경 */}
           <ParticleBackground />
+
+          {/* 떠다니는 우주비행사 */}
+          <FloatingAstronaut />
 
           {/* 커서 따라다니는 큰 원 */}
           <motion.div
@@ -69,7 +73,7 @@ function Home() {
           />
 
           {/* 애니메이션 배경 */}
-          <div className="hero-glow absolute -inset-6 opacity-50" />
+          <div className="hero-glow absolute -inset-6 opacity-50 pointer-events-none" />
 
           <motion.div
             className="relative z-10 w-full text-center px-8 md:px-16"
