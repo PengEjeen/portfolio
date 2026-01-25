@@ -1,17 +1,158 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  background: #020617;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 애니메이션들 */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Hero Section Animations */
+/* Hero Section Animations */
+.hero-glow {
+  background: radial-gradient(circle at 30% 30%, rgba(20, 184, 166, 0.4), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(249, 115, 22, 0.4), transparent 50%);
+  filter: blur(40px);
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #14b8a6 0%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Typing Cursor */
+.typing-cursor {
+  animation: blink 0.8s infinite;
+  color: #14b8a6;
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Floating Tech Icons */
+.floating-icons .tech-icon {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  animation: float 3s ease-in-out infinite;
+}
+
+.floating-icons .tech-icon:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.floating-icons .tech-icon:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.floating-icons .tech-icon:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+/* Enhanced Buttons */
+.btn-lg {
+  @apply px-7 py-3 text-base;
+}
+
+/* Enhanced Chips */
+.chip-enhanced {
+  @apply px-4 py-2 text-sm rounded-full bg-gradient-to-r from-teal-500/20 to-amber-500/20 border border-white/20 text-slate-200 hover:border-white/40 transition-colors;
+}
+
+/* Social Links */
+.social-link {
+  @apply w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all;
+}
+
+.social-link-large {
+  @apply px-6 py-2 rounded-full bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all text-sm font-medium;
+}
+
+/* Contact Glow */
+.contact-glow {
+  background: radial-gradient(circle at center, rgba(20, 184, 166, 0.5), rgba(249, 115, 22, 0.5));
+  filter: blur(60px);
+}
+
+/* Stat Card Animation */
+.stat-card:hover {
+  box-shadow: 0 0 30px rgba(20, 184, 166, 0.2);
+}
+
+/* Project Card Enhancement */
+.project-card:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
