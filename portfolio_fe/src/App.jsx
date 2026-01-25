@@ -4,7 +4,7 @@ import AppRouter from "./routes/AppRouter";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/portfolio">
       <AppRouter />
     </BrowserRouter>
   );
