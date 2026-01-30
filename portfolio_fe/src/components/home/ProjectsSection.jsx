@@ -86,7 +86,34 @@ export default function ProjectsSection() {
         <h2 className="text-3xl md:text-4xl font-bold">Projects</h2>
         <span className="text-sm text-slate-400">Selected work</span>
       </div>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-[140px_1fr_2fr] gap-6">
+        <div className="hidden md:flex flex-col gap-4 pt-10">
+          {projects.map((_, idx) => (
+            <div key={`bookmark-${idx}`} className="flex items-center gap-3">
+              <div className="relative h-10 w-8">
+                <div
+                  className={`absolute inset-0 rounded-l-md ${
+                    activeIndex === idx ? 'bg-teal-400' : 'bg-slate-700'
+                  }`}
+                />
+                <div className="absolute right-[-10px] top-0 h-full w-3">
+                  <div
+                    className={`h-full w-0 border-t-[20px] border-b-[20px] border-l-[10px] ${
+                      activeIndex === idx ? 'border-l-teal-400' : 'border-l-slate-700'
+                    } border-t-transparent border-b-transparent`}
+                  />
+                </div>
+              </div>
+              <span
+                className={`text-xs font-semibold tracking-[0.35em] ${
+                  activeIndex === idx ? 'text-teal-300' : 'text-slate-500'
+                }`}
+              >
+                {String(idx + 1).padStart(2, '0')}
+              </span>
+            </div>
+          ))}
+        </div>
         <div
           ref={listRef}
           className="space-y-4 max-h-[520px] overflow-y-auto pr-2 scroll-smooth snap-y snap-mandatory py-10"
@@ -140,7 +167,7 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        <div className="md:col-span-2 card p-8 md:p-10">
+        <div className="card p-8 md:p-10">
           <div className="flex items-center justify-between">
             <div>
               <div className={`badge text-${activeProject.color}-300`}>{activeProject.tag}</div>

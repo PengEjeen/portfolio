@@ -5,9 +5,6 @@ import ParticleBackground from '../ParticleBackground';
 export default function HeroSection() {
   const [typedText, setTypedText] = useState('');
   const fullText = 'Fullstack Engineer';
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [tiltX, setTiltX] = useState(0);
-  const [tiltY, setTiltY] = useState(0);
 
   useEffect(() => {
     let index = 0;
@@ -22,20 +19,6 @@ export default function HeroSection() {
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * -20;
-      setTiltX(y);
-      setTiltY(x);
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617] p-0">
       <div className="absolute inset-0 opacity-20 pointer-events-none">
@@ -46,19 +29,6 @@ export default function HeroSection() {
 
       <ParticleBackground />
 
-      <motion.div
-        className="pointer-events-none fixed w-96 h-96 rounded-full bg-teal-500/10 blur-3xl"
-        animate={{
-          x: mousePosition.x - 192,
-          y: mousePosition.y - 192,
-        }}
-        transition={{
-          type: 'spring',
-          damping: 30,
-          stiffness: 200,
-        }}
-      />
-
       <div className="hero-glow absolute -inset-6 opacity-50 pointer-events-none" />
 
       <motion.div
@@ -66,10 +36,6 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        style={{
-          transform: `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`,
-          transition: 'transform 0.1s ease-out',
-        }}
       >
         <div className="floating-icons absolute inset-0 pointer-events-none">
           <motion.span

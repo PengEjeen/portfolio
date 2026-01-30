@@ -10,7 +10,8 @@ const ParticleBackground = () => {
         const ctx = canvas.getContext('2d');
         let animationFrameId;
         let particles = [];
-        let mouse = { x: null, y: null, radius: 150 };
+        let sparks = [];
+        let lastMouse = { x: null, y: null };
 
         // 캔버스 크기 설정
         const setCanvasSize = () => {
@@ -39,19 +40,6 @@ const ParticleBackground = () => {
                 if (this.y > canvas.height) this.y = 0;
                 if (this.y < 0) this.y = canvas.height;
 
-                // 마우스 상호작용
-                if (mouse.x != null && mouse.y != null) {
-                    const dx = mouse.x - this.x;
-                    const dy = mouse.y - this.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < mouse.radius) {
-                        const force = (mouse.radius - distance) / mouse.radius;
-                        const angle = Math.atan2(dy, dx);
-                        this.x -= Math.cos(angle) * force * 2;
-                        this.y -= Math.sin(angle) * force * 2;
-                    }
-                }
             }
 
             draw() {
@@ -59,6 +47,35 @@ const ParticleBackground = () => {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
+            }
+        }
+
+        class Spark {
+            constructor(x, y, vx, vy) {
+                this.x = x;
+                this.y = y;
+                this.vx = vx;
+                this.vy = vy;
+                this.life = 28 + Math.random() * 10;
+                this.maxLife = this.life;
+                this.size = 6 + Math.random() * 8;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += 0.02;
+                this.life -= 1;
+            }
+
+            draw() {
+                const alpha = Math.max(this.life / this.maxLife, 0);
+                ctx.strokeStyle = `rgba(94, 234, 212, ${alpha * 0.8})`;
+                ctx.lineWidth = 1.2;
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x - this.vx * 2, this.y - this.vy * 2);
+                ctx.stroke();
             }
         }
 
@@ -102,18 +119,39 @@ const ParticleBackground = () => {
             });
 
             connectParticles();
+            sparks = sparks.filter(spark => spark.life > 0);
+            sparks.forEach(spark => {
+                spark.update();
+                spark.draw();
+            });
             animationFrameId = requestAnimationFrame(animate);
         };
 
         // 마우스 이벤트
         const handleMouseMove = (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
+            const { clientX, clientY } = e;
+            if (lastMouse.x == null || lastMouse.y == null) {
+                lastMouse = { x: clientX, y: clientY };
+                return;
+            }
+
+            const dx = clientX - lastMouse.x;
+            const dy = clientY - lastMouse.y;
+            const speed = Math.min(Math.hypot(dx, dy), 30);
+            const count = Math.max(2, Math.floor(speed / 3));
+
+            for (let i = 0; i < count; i++) {
+                const spread = (Math.random() - 0.5) * 4;
+                const vx = dx * 0.2 + spread;
+                const vy = dy * 0.2 + spread;
+                sparks.push(new Spark(clientX, clientY, vx, vy));
+            }
+
+            lastMouse = { x: clientX, y: clientY };
         };
 
         const handleMouseLeave = () => {
-            mouse.x = null;
-            mouse.y = null;
+            lastMouse = { x: null, y: null };
         };
 
         // 리사이즈 이벤트
