@@ -6,11 +6,27 @@ export default function ProjectsSection() {
   const projects = [
     {
       title: 'AssetStore',
-      desc: '설명은 내가 채울게요',
-      tag: 'Product',
+      desc: '3D 애니메이션 생성 모델의 제작과 배포 ',
+      tag: 'AI',
       color: 'teal',
       image: assetStudioImage,
-      stack: ['React', 'Node.js', 'PostgreSQL'],
+      period: { start: '2025.04', end: '2025.05' },
+      teamSize: '4명',
+      stack: ['PyTorch', 'transformers', 'FastApi', 'Docker', 'Gradio', 'Redis'],
+      links: {
+        github: 'https://github.com/google-ml-bc-2nd-2025',
+        // huggingface: '#',
+        // linkedin: '#',
+      },
+      content: '기획자 초안(설명·레퍼런스)만으로 게임 에셋 규격에 맞는 소통용 AI 3D 애니메이션 프록시 모델을 빠르게 생성해, 기획자와 디자이너가 같은 화면을 보며 형태·스케일·동작/타이밍을 즉시 확인하고 해석 차이로 인한 반복 수정과 커뮤니케이션 비용을 줄이는 프로젝트',
+      roles: ['MDM(Motion Diffusion Model) 모델 논문 리서치', 'MDM 학습방법 정립', 
+        'Mixamo 데이터 MDM 학습에 맞게 전처리', '성능지표 FID, rot_mse 선정','모델 서빙'],
+      troubleshooting: [
+        {
+          problem: '데이터 형식의 문제가 있었음. 모든 관절의 위치가 다르고 순서가 다름',
+          solution: '데이터를 smpl이라는 본 구조에 맞춤.',
+        },
+      ],
       highlights: [
         '디자인 에셋 판매/구매 플로우',
         '검색/필터 최적화',
@@ -22,7 +38,22 @@ export default function ProjectsSection() {
       desc: '설명은 내가 채울게요',
       tag: 'Backend',
       color: 'blue',
+      period: { start: '2023.10', end: '2024.02' },
+      teamSize: '2명',
       stack: ['Go', 'Redis', 'gRPC'],
+      links: {
+        github: '#',
+        huggingface: '#',
+        linkedin: '#',
+      },
+      content: '프로젝트 개요/핵심 기능/성과를 여기에 적어주세요.',
+      roles: ['API 설계 및 구현', '캐싱 전략 수립'],
+      troubleshooting: [
+        {
+          problem: '지연 시간 변동',
+          solution: '서킷 브레이커와 리트라이 정책 적용',
+        },
+      ],
       highlights: ['API 집약', '캐싱 전략', '관측성 개선'],
     },
     {
@@ -30,7 +61,22 @@ export default function ProjectsSection() {
       desc: '설명은 내가 채울게요',
       tag: 'Fullstack',
       color: 'purple',
+      period: { start: '2024.03', end: '2024.09' },
+      teamSize: '4명',
       stack: ['Next.js', 'D3', 'BigQuery'],
+      links: {
+        github: '#',
+        huggingface: '#',
+        linkedin: '#',
+      },
+      content: '프로젝트 개요/핵심 기능/성과를 여기에 적어주세요.',
+      roles: ['데이터 시각화 구현', '권한 관리 설계'],
+      troubleshooting: [
+        {
+          problem: '대용량 렌더링 병목',
+          solution: '가상화와 레이어 분리로 렌더링 최적화',
+        },
+      ],
       highlights: ['이거요', '대용량 처리', '권한 관리'],
     },
   ];
@@ -89,8 +135,12 @@ export default function ProjectsSection() {
       <div className="grid md:grid-cols-[140px_1fr_2fr] gap-6">
         <div className="hidden md:flex flex-col gap-4 pt-10">
           {projects.map((_, idx) => (
-            <div key={`bookmark-${idx}`} className="flex items-center gap-3">
-              <div className="relative h-10 w-8">
+            <div key={`bookmark-${idx}`} className="flex items-center gap-4">
+              <div
+                className={`relative h-10 w-8 transition-transform duration-400 ${
+                  activeIndex === idx ? 'scale-125' : 'scale-95'
+                }`}
+              >
                 <div
                   className={`absolute inset-0 rounded-l-md ${
                     activeIndex === idx ? 'bg-teal-400' : 'bg-slate-700'
@@ -167,31 +217,58 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        <div className="card p-8 md:p-10">
-          <div className="flex items-center justify-between">
+        <div className="card p-7 md:p-8">
+          <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <div className={`badge text-${activeProject.color}-300`}>{activeProject.tag}</div>
               <h3 className="mt-3 text-3xl font-bold">{activeProject.title}</h3>
             </div>
-            <span className="text-xs uppercase tracking-[0.3em] text-slate-400">Current Project</span>
+            <div className="text-xs uppercase tracking-[0.3em] text-slate-400">Current Project</div>
           </div>
+
+          <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-300">
+            <span className="px-3 py-1 rounded-full border border-white/10 bg-slate-900/50">
+              기간: {activeProject.period.start} ~ {activeProject.period.end}
+            </span>
+            <span className="px-3 py-1 rounded-full border border-white/10 bg-slate-900/50">
+              개발인원: {activeProject.teamSize}
+            </span>
+            <div className="flex items-center gap-2">
+              {activeProject.links?.github && (
+                <a
+                  href={activeProject.links.github}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-slate-900/50 hover:border-teal-400/60 transition-colors"
+                  aria-label="GitHub"
+                >
+                  <img src="https://github.com/favicon.ico" alt="GitHub" className="h-4 w-4 opacity-90 invert" />
+                </a>
+              )}
+              {activeProject.links?.huggingface && (
+                <a
+                  href={activeProject.links.huggingface}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-slate-900/50 hover:border-teal-400/60 transition-colors"
+                  aria-label="Hugging Face"
+                >
+                  <img src="https://huggingface.co/favicon.ico" alt="Hugging Face" className="h-4 w-4 opacity-80" />
+                </a>
+              )}
+              {activeProject.links?.linkedin && (
+                <a
+                  href={activeProject.links.linkedin}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-slate-900/50 hover:border-teal-400/60 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <img src="https://linkedin.com/favicon.ico" alt="LinkedIn" className="h-4 w-4 opacity-80" />
+                </a>
+              )}
+            </div>
+          </div>
+
           <p className="mt-4 text-slate-300 text-lg leading-relaxed">{activeProject.desc}</p>
 
-          <div className="mt-6">
-            <h4 className="text-sm uppercase tracking-wider text-teal-300 font-semibold">Highlights</h4>
-            <ul className="mt-3 space-y-2 text-slate-300">
-              {activeProject.highlights.map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <span className="text-teal-400">▸</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="mt-6">
-            <h4 className="text-sm uppercase tracking-wider text-amber-300 font-semibold">Stack</h4>
-            <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-4">
+            <h4 className="text-xs uppercase tracking-wider text-amber-300 font-semibold">Stack</h4>
+            <div className="mt-2 flex flex-wrap gap-2">
               {activeProject.stack.map((tech) => (
                 <span key={tech} className="chip-enhanced">
                   {tech}
@@ -200,13 +277,40 @@ export default function ProjectsSection() {
             </div>
           </div>
 
-          <div className="mt-8 flex gap-3">
-            <a href="#" className="btn-primary">
-              Live Demo →
-            </a>
-            <a href="#" className="btn-ghost">
-              GitHub
-            </a>
+          <div className="mt-5">
+            <h4 className="text-xs uppercase tracking-wider text-teal-300 font-semibold">내용</h4>
+            <p className="mt-2 text-sm text-slate-300 leading-relaxed">{activeProject.content}</p>
+          </div>
+
+          <div className="mt-6 grid gap-5 lg:grid-cols-2">
+            <div>
+              <h4 className="text-xs uppercase tracking-wider text-slate-300 font-semibold">역할</h4>
+              <ul className="mt-2 space-y-2 text-sm text-slate-300">
+                {activeProject.roles.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="text-teal-400">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xs uppercase tracking-wider text-slate-300 font-semibold">트러블 슈팅</h4>
+              <ul className="mt-2 space-y-3 text-sm text-slate-300">
+                {activeProject.troubleshooting.map((item) => (
+                  <li key={item.problem} className="space-y-1">
+                    <p>
+                      <span className="text-slate-400">문제: </span>
+                      {item.problem}
+                    </p>
+                    <p>
+                      <span className="text-teal-300">해결: </span>
+                      {item.solution}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
