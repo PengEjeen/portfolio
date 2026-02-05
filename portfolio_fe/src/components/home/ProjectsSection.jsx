@@ -1,22 +1,60 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import assetStudioImage from '../../assets/AssetStudio.png';
+import snapgoal from '../../assets/snapgoal.png';
+import assetStudioVideo from '../../assets/samples_54_to_56.mp4';
+import culturebankImage from '../../assets/culturebank.png'
+import ashAudio from '../../assets/ash_smple.mp4'
 
 export default function ProjectsSection() {
   const projects = [
+    {
+      title: 'Snapgoal',
+      desc: '축구 영상에서 선수 추적 및 하이라이트 영상 추출해주는 사이트',
+      tag: 'AI',
+      color: 'blue',
+      period: { start: '2025.05', end: '2025.08' },
+      teamSize: '8명',
+      stack: ['Python', 'OpenCV', 'PyTorch', "FastApi"],
+      links: {
+        github: 'https://www.snapgoal-hq.co.kr/',
+        huggingface: 'https://huggingface.co/datasets/NamYeongCho/deep_sort_yolov3'
+      },
+      media: {
+        type: 'image',
+        src: snapgoal,
+      },
+      content: '조기축구회에서 경기를 촬영한 뒤 골·선방 같은 하이라이트 장면만 자동으로 추출하고, 그중에서도 내가 나온 구간을 트래킹해 개인별로 소장하고 싶어 하는 수요가 존재. 그러나 수작업으로 장면을 찾고 편집하는 데 시간이 많이 들고 원하는 순간을 놓치기 쉬워, 접근성이 낮다는 문제가 있음. 본 프로젝트는 영상에서 주요 이벤트를 자동 검출·요약하고 개인별 플레이 구간을 추적·분리해 손쉽게 저장·공유할 수 있도록 하여, 조기축구 참여자들의 니즈를 충족하는 것을 목표로 하는 사이트 제작',
+      roles: ['선수 트래커 제작', '모델 배포', '영상 편집기 제작'],
+      troubleshooting: [
+        {
+          problem: '객체가 겹치는 일(Occlusion)이 많아 ID가 바뀌는 문제 (ID switching)',
+          solution: 'BoT-SORT 기반 추적 알고리즘(https://arxiv.org/pdf/2206.14651)을 채택하여 문제 완화. (BoT-Sot-StrongSort 진행 확정)',
+        },
+        {
+          problem: '객체가 사라졌다 다시 나타날 때 ID 유지 문제',
+          solution: 'DeepSORT 등 일반적인 추적기만으로는 한계가 있어, Re-ID(재식별) 기반의 추적 방법 사용'
+        }
+      ],
+      highlights: ['API 집약', '캐싱 전략', '관측성 개선'],
+    },    
     {
       title: 'AssetStore',
       desc: '3D 애니메이션 생성 모델의 제작과 배포 ',
       tag: 'AI',
       color: 'teal',
-      image: assetStudioImage,
       period: { start: '2025.04', end: '2025.05' },
       teamSize: '4명',
       stack: ['PyTorch', 'transformers', 'FastApi', 'Docker', 'Gradio', 'Redis'],
       links: {
         github: 'https://github.com/google-ml-bc-2nd-2025',
-        // huggingface: '#',
+        huggingface: 'https://huggingface.co/NamYeongCho/humanml_mixamo2_trans_enc_512',
         // linkedin: '#',
+      },
+      media: {
+        type: 'video',
+        src: assetStudioVideo,
+        poster: assetStudioImage,
       },
       content: '기획자 초안(설명·레퍼런스)만으로 게임 에셋 규격에 맞는 소통용 AI 3D 애니메이션 프록시 모델을 빠르게 생성해, 기획자와 디자이너가 같은 화면을 보며 형태·스케일·동작/타이밍을 즉시 확인하고 해석 차이로 인한 반복 수정과 커뮤니케이션 비용을 줄이는 프로젝트',
       roles: ['MDM(Motion Diffusion Model) 모델 논문 리서치', 'MDM 학습방법 정립', 
@@ -24,65 +62,72 @@ export default function ProjectsSection() {
       troubleshooting: [
         {
           problem: '데이터 형식의 문제가 있었음. 모든 관절의 위치가 다르고 순서가 다름',
-          solution: '데이터를 smpl이라는 본 구조에 맞춤.',
+          solution: '데이터를 smpl 본 구조에 맞춤.',
         },
-      ],
-      highlights: [
-        '디자인 에셋 판매/구매 플로우',
-        '검색/필터 최적화',
-        '결제/정산 자동화',
       ],
     },
     {
-      title: 'Project Two',
-      desc: '설명은 내가 채울게요',
-      tag: 'Backend',
+      title: 'CultureBank',
+      desc: '해외여행 시 “손을 들고 주문해도 되나?”, “팁은 얼만큼인가?” 같은 사소한 질문에 대한 LLM',
+      tag: 'AI',
       color: 'blue',
-      period: { start: '2023.10', end: '2024.02' },
-      teamSize: '2명',
+      period: { start: '2024.09', end: '2024.10' },
+      teamSize: '3명',
       stack: ['Go', 'Redis', 'gRPC'],
       links: {
-        github: '#',
-        huggingface: '#',
-        linkedin: '#',
+        github: 'https://github.com/PengEjeen/travelplanner_culturebank/blob/master/app.py',
+        huggingface: 'https://huggingface.co/NamYeongCho/gemma2-9b-CultureBank-v1',
+        linkedin: 'https://www.linkedin.com/posts/activity-7247792336691175424-Nrb8?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFApHpEB5ZL660mff93Xip-QlEHmkoyQA8I',
       },
-      content: '프로젝트 개요/핵심 기능/성과를 여기에 적어주세요.',
-      roles: ['API 설계 및 구현', '캐싱 전략 수립'],
+      media: {
+        type: 'image',
+        src: culturebankImage,
+      },
+      content: '해외여행 중 “손을 들고 주문해도 되나?”, “팁은 얼만큼인가?” 같은 사소하지만 중요한 질문에 대한 정보를 상황에 맞게 빠르게 찾기 어려운 어려움이 존재하며, 이를 해결하기 위해 국가/장소/상황별 매너·관습·팁 기준을 즉시 안내하는 챗봇 형태로 개발을 목표로 함.',
+      roles: ['논문 리딩을 통해 파인튜닝 방법 정립', '팀원들과 논의하여 학습에 사용할 데이터 선정 및 전처리 방식 정의',
+        'gemme2-9b모델 파인튜닝'
+      ],
       troubleshooting: [
         {
-          problem: '지연 시간 변동',
-          solution: '서킷 브레이커와 리트라이 정책 적용',
+          problem: '초기 파인튜닝 모델이 단어를 반복하여 말하는 문제가 있었음',
+          solution: 'EOS토큰 재설정, temperature나 top-k설정, 프롬프트 개선, 데이터 개선으로 문제 해결',
         },
       ],
-      highlights: ['API 집약', '캐싱 전략', '관측성 개선'],
     },
     {
-      title: 'Project Three',
-      desc: '설명은 내가 채울게요',
-      tag: 'Fullstack',
+      title: 'xtts-v2-ash-ko',
+      desc: '리그오브레전드 애쉬 캐릭터 TTS제작',
+      tag: 'AI',
       color: 'purple',
-      period: { start: '2024.03', end: '2024.09' },
-      teamSize: '4명',
-      stack: ['Next.js', 'D3', 'BigQuery'],
+      period: { start: '2024.05', end: '2024.06' },
+      teamSize: '1명',
+      stack: ['TTS', 'transformers'],
       links: {
-        github: '#',
-        huggingface: '#',
-        linkedin: '#',
+        // github: '#',
+        huggingface: 'https://huggingface.co/NamYeongCho/xtts-v2-ash-ko',
+        // linkedin: '#',
+      },
+      media: {
+        type: 'audio',
+        src: ashAudio,
+        poster: snapgoal
       },
       content: '프로젝트 개요/핵심 기능/성과를 여기에 적어주세요.',
-      roles: ['데이터 시각화 구현', '권한 관리 설계'],
+      roles: ['유튜브 데이터 수집', '데이터 전처리', '모델 학습'],
       troubleshooting: [
         {
-          problem: '대용량 렌더링 병목',
-          solution: '가상화와 레이어 분리로 렌더링 최적화',
+          problem: '학습 초반 음성 파일들의 단어 반복생성 문제 있었음.',
+          solution: '단어 이후 무음구간에 의한 반복생성 있었음. 전처리로 무음 제거 및 음성 생성 사이즈 제한하여 해결',
         },
       ],
-      highlights: ['이거요', '대용량 처리', '권한 관리'],
     },
   ];
   const [activeIndex, setActiveIndex] = useState(0);
   const activeProject = projects[activeIndex];
   const listRef = useRef(null);
+  const troubleshootingItems = Array.isArray(activeProject.troubleshooting)
+    ? activeProject.troubleshooting
+    : [];
 
   useEffect(() => {
     const listEl = listRef.current;
@@ -198,14 +243,49 @@ export default function ProjectsSection() {
               transition={{ duration: 0.5, delay: idx * 0.15 }}
             >
               <div className="aspect-video rounded-lg bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 border border-white/10 mb-4 overflow-hidden group-hover:border-white/30 transition-colors">
-                {project.image ? (
+                {project.media?.type === 'image' && project.media?.src ? (
+                  <img
+                    src={project.media.src}
+                    alt={`${project.title} screenshot`}
+                    className="h-full w-full object-cover"
+                  />
+                ) : project.media?.type === 'video' && project.media?.src ? (
+                  <video
+                    src={project.media.src}
+                    poster={project.media.poster}
+                    className="h-full w-full object-cover"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                ) : project.media?.type === 'audio' ? (
+                  <div className="h-full w-full flex flex-col items-center justify-center gap-3 text-slate-500 px-4">
+                    {project.media.poster ? (
+                      <div className="w-full h-32 rounded-md overflow-hidden border border-white/10 bg-slate-900/50">
+                        <img
+                          src={project.media.poster}
+                          alt={`${project.title} audio poster`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="text-xs text-slate-600">[Audio Poster]</div>
+                    )}
+                    {project.media.src ? (
+                      <audio src={project.media.src} controls className="w-full" />
+                    ) : (
+                      <div className="text-xs text-slate-600">[Audio Placeholder]</div>
+                    )}
+                  </div>
+                ) : project.image ? (
                   <img
                     src={project.image}
                     alt={`${project.title} screenshot`}
                     className="h-full w-full object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-slate-600">[Screenshot]</div>
+                  <div className="w-full h-full flex items-center justify-center text-slate-600">[Media]</div>
                 )}
               </div>
               <div className={`badge text-${project.color}-300`}>{project.tag}</div>
@@ -296,20 +376,33 @@ export default function ProjectsSection() {
             </div>
             <div>
               <h4 className="text-xs uppercase tracking-wider text-slate-300 font-semibold">트러블 슈팅</h4>
-              <ul className="mt-2 space-y-3 text-sm text-slate-300">
-                {activeProject.troubleshooting.map((item) => (
-                  <li key={item.problem} className="space-y-1">
-                    <p>
-                      <span className="text-slate-400">문제: </span>
-                      {item.problem}
-                    </p>
-                    <p>
-                      <span className="text-teal-300">해결: </span>
-                      {item.solution}
-                    </p>
-                  </li>
-                ))}
-              </ul>
+              {troubleshootingItems.length > 0 ? (
+                <ul className="mt-2 space-y-3 text-sm text-slate-300">
+                  {troubleshootingItems.map((item, index) => (
+                    <li key={typeof item === 'string' ? `${item}-${index}` : item.problem} className="space-y-1">
+                      {typeof item === 'string' ? (
+                        <p>
+                          <span className="text-teal-300">• </span>
+                          {item}
+                        </p>
+                      ) : (
+                        <>
+                          <p>
+                            <span className="text-slate-400">문제: </span>
+                            {item.problem}
+                          </p>
+                          <p>
+                            <span className="text-teal-300">해결: </span>
+                            {item.solution}
+                          </p>
+                        </>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-2 text-sm text-slate-500">트러블슈팅 항목을 추가해주세요.</p>
+              )}
             </div>
           </div>
         </div>
