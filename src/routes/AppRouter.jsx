@@ -3,7 +3,6 @@ import AdminRoute from "./AdminRoute";
 import Layout from "../layouts/Layout";
 import AdminDashboard from "../pages/AdminDashboard";
 import Home from "../pages/Home";
-import Login from "../pages/Login";
 
 export default function AppRouter() {
   return (

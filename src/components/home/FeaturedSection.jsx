@@ -32,12 +32,12 @@ export default function FeaturedSection() {
               ))}
             </div>
             <div className="pt-4 flex gap-3">
-              <a href="#" className="btn-primary">
+              <button type="button" className="btn-primary">
                 Live Demo →
-              </a>
-              <a href="#" className="btn-ghost">
+              </button>
+              <button type="button" className="btn-ghost">
                 GitHub
-              </a>
+              </button>
             </div>
           </div>
           <div className="relative">
