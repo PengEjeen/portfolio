@@ -14,8 +14,8 @@ export default function ContactSection() {
         <div className="contact-glow absolute -inset-6 opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
 
         <div className="relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold">함께 멋진 것을 만들어요</h2>
-          <p className="mt-4 text-xl text-slate-300">프리랜스, 풀타임, 협업 모두 환영합니다</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900">함께 멋진 것을 만들어요</h2>
+          <p className="mt-4 text-xl text-slate-600">프리랜스, 풀타임, 협업 모두 환영합니다</p>
           <a className="btn-primary btn-lg mt-8 inline-block" href="mailto:hello@peng-ejeen.dev">
             Say Hello
           </a>

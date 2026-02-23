@@ -20,7 +20,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617] p-0">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white p-0">
       <div className="absolute inset-0 opacity-20 pointer-events-none">
         <div className="gradient-wave" />
         <div className="gradient-wave" style={{ animationDelay: '2s' }} />
@@ -81,7 +81,7 @@ export default function HeroSection() {
         </div>
 
         <motion.p
-          className="text-sm uppercase tracking-[0.35em] text-teal-300 font-semibold"
+          className="text-sm uppercase tracking-[0.35em] text-slate-600 font-semibold"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
@@ -92,7 +92,7 @@ export default function HeroSection() {
 
         <div className="relative h-48 my-8 flex items-center justify-center">
           <motion.h1
-            className="text-6xl md:text-8xl font-black text-center"
+            className="text-6xl md:text-8xl font-black text-center text-slate-900"
             initial={{ y: -300, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
@@ -102,20 +102,13 @@ export default function HeroSection() {
               mass: 1.2,
               delay: 0.2,
             }}
-            style={{
-              background: 'linear-gradient(135deg, #14b8a6 0%, #06b6d4 50%, #3b82f6 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              filter: 'drop-shadow(0 0 30px rgba(20, 184, 166, 0.5))',
-            }}
           >
             조남영
           </motion.h1>
         </div>
 
         <motion.p
-          className="mt-6 text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto"
+          className="mt-6 text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
@@ -189,9 +182,9 @@ export default function HeroSection() {
         transition={{ delay: 1.5, duration: 1 }}
         onClick={() => document.getElementById('featured')?.scrollIntoView({ behavior: 'smooth' })}
       >
-        <span className="text-sm text-slate-400 uppercase tracking-wider">Scroll Down</span>
+        <span className="text-sm text-slate-500 uppercase tracking-wider">Scroll Down</span>
         <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}>
-          <svg className="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </motion.div>

@@ -29,16 +29,16 @@ function Home() {
 
   return (
     <div>
-      <div className="fixed left-0 right-0 top-0 z-50 h-1 bg-white/5">
+      <div className="fixed left-0 right-0 top-0 z-50 h-1 bg-slate-200">
         <div
-          className="h-full bg-gradient-to-r from-teal-400 via-cyan-400 to-amber-400"
+          className="h-full bg-slate-900"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
       <HeroSection />
 
-      <div className="bg-[#020617] px-6 py-10 md:py-16">
+      <div className="bg-white px-6 py-10 md:py-16">
         <div className="mx-auto max-w-6xl space-y-14">
           <StatsSection />
           <FeaturedSection />

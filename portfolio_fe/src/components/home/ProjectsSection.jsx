@@ -5,6 +5,8 @@ import snapgoal from '../../assets/snapgoal.png';
 import assetStudioVideo from '../../assets/samples_54_to_56.mp4';
 import culturebankImage from '../../assets/culturebank.png'
 import ashAudio from '../../assets/ash_smple.mp4'
+import ashImage from '../../assets/ash.jpg'
+import kewChloeImage from '../../assets/kewChloe.webp'
 
 export default function ProjectsSection() {
   const projects = [
@@ -12,12 +14,11 @@ export default function ProjectsSection() {
       title: 'Snapgoal',
       desc: '축구 영상에서 선수 추적 및 하이라이트 영상 추출해주는 사이트',
       tag: 'AI',
-      color: 'blue',
       period: { start: '2025.05', end: '2025.08' },
       teamSize: '8명',
       stack: ['Python', 'OpenCV', 'PyTorch', "FastApi"],
       links: {
-        github: 'https://www.snapgoal-hq.co.kr/',
+        url: 'https://www.snapgoal-hq.co.kr/',
         huggingface: 'https://huggingface.co/datasets/NamYeongCho/deep_sort_yolov3'
       },
       media: {
@@ -42,7 +43,6 @@ export default function ProjectsSection() {
       title: 'AssetStore',
       desc: '3D 애니메이션 생성 모델의 제작과 배포 ',
       tag: 'AI',
-      color: 'teal',
       period: { start: '2025.04', end: '2025.05' },
       teamSize: '4명',
       stack: ['PyTorch', 'transformers', 'FastApi', 'Docker', 'Gradio', 'Redis'],
@@ -70,7 +70,6 @@ export default function ProjectsSection() {
       title: 'CultureBank',
       desc: '해외여행 시 “손을 들고 주문해도 되나?”, “팁은 얼만큼인가?” 같은 사소한 질문에 대한 LLM',
       tag: 'AI',
-      color: 'blue',
       period: { start: '2024.09', end: '2024.10' },
       teamSize: '3명',
       stack: ['Go', 'Redis', 'gRPC'],
@@ -98,7 +97,6 @@ export default function ProjectsSection() {
       title: 'xtts-v2-ash-ko',
       desc: '리그오브레전드 애쉬 캐릭터 TTS제작',
       tag: 'AI',
-      color: 'purple',
       period: { start: '2024.05', end: '2024.06' },
       teamSize: '1명',
       stack: ['TTS', 'transformers'],
@@ -110,7 +108,7 @@ export default function ProjectsSection() {
       media: {
         type: 'audio',
         src: ashAudio,
-        poster: snapgoal
+        poster: ashImage
       },
       content: '프로젝트 개요/핵심 기능/성과를 여기에 적어주세요.',
       roles: ['유튜브 데이터 수집', '데이터 전처리', '모델 학습'],
@@ -121,6 +119,58 @@ export default function ProjectsSection() {
         },
       ],
     },
+    {
+      title: 'Kew Chloe',
+      desc: '시스템과 사람 모두에게 작업 할당이 가능한 프로젝트 협업용 툴',
+      tag: 'BE',
+      period: { start: '2022.08', end: '2023.08' },
+      teamSize: '5명',
+      stack: ['Pandas', 'apache2', 'GCP', 'FastAPI', "MySQL"],
+      links: {
+        url: ''
+        // github: '#',
+        // huggingface: 'https://huggingface.co/NamYeongCho/xtts-v2-ash-ko',
+        // linkedin: '#',
+      },
+      media: {
+        type: 'image',
+        src: kewChloeImage,
+      },
+      content: '(주)큐티코리아에서 진행. Flow와 같은 협업툴 형태를 기반으로, 업무가 일정한 순서로 진행된다는 가정 아래 표준 작업 절차(SOP) 템플릿을 도입한 프로젝트 협업 시스템. 사용자가 프로젝트/작업을 생성하면 선택한 SOP 단계에 맞춰 하위 작업이 자동으로 생성되고, 반복적·정형화된 단계는 규칙 기반 자동화로 처리되도록 설계. SOP의 생성·수정·삭제와 작업 할당을 통합 관리하는 분배 서버를 구축해 사람과 시스템 모두에게 작업을 배정할 수 있으며, 각 SOP 단계의 작업은 비동기 방식으로 할당·실행되어 운영 효율과 협업 생산성을 높이는 것을 목표로 함.',
+      roles: ['표준작업 절차 기획', '비동기 작업 할당 구조 설계', '자동화 파이프라인 구축', '작업 분배기 제작'],
+      troubleshooting: [
+        {
+          problem: '프로젝트 작업 등록 시 분류 모델 2개를 동시에 사용하는 구조로 인해 프로세스 메모리 사용량이 급증하여 서비스 안정성이 저하됨',
+          solution: '주기적 GC처리, exec/fork 기반 프로세스 관리 방식으로 분류기 실행 구조를 개선해 메모리 중복 최소화로 메모리 자원 약 50% 절감',
+        },
+      ],
+    },
+    {
+      title: 'TravelPlanner',
+      desc: '외교부, 축제정보, 나라 문화정보 등 다양한 정보를 받을 수 있는 여행 일정 편집 툴.',
+      tag: 'BE',
+      period: { start: '2022.08', end: '2023.08' },
+      teamSize: '5명',
+      stack: ['Pandas', 'apache2', 'GCP', 'FastAPI', "MySQL"],
+      links: {
+        url: ''
+        // github: '#',
+        // huggingface: 'https://huggingface.co/NamYeongCho/xtts-v2-ash-ko',
+        // linkedin: '#',
+      },
+      media: {
+        type: 'image',
+        src: kewChloeImage,
+      },
+      content: '(주)큐티코리아에서 진행. Flow와 같은 협업툴 형태를 기반으로, 업무가 일정한 순서로 진행된다는 가정 아래 표준 작업 절차(SOP) 템플릿을 도입한 프로젝트 협업 시스템. 사용자가 프로젝트/작업을 생성하면 선택한 SOP 단계에 맞춰 하위 작업이 자동으로 생성되고, 반복적·정형화된 단계는 규칙 기반 자동화로 처리되도록 설계. SOP의 생성·수정·삭제와 작업 할당을 통합 관리하는 분배 서버를 구축해 사람과 시스템 모두에게 작업을 배정할 수 있으며, 각 SOP 단계의 작업은 비동기 방식으로 할당·실행되어 운영 효율과 협업 생산성을 높이는 것을 목표로 함.',
+      roles: ['표준작업 절차 기획', '비동기 작업 할당 구조 설계', '자동화 파이프라인 구축', '작업 분배기 제작'],
+      troubleshooting: [
+        {
+          problem: '프로젝트 작업 등록 시 분류 모델 2개를 동시에 사용하는 구조로 인해 프로세스 메모리 사용량이 급증하여 서비스 안정성이 저하됨',
+          solution: '주기적 GC처리, exec/fork 기반 프로세스 관리 방식으로 분류기 실행 구조를 개선해 메모리 중복 최소화로 메모리 자원 약 50% 절감',
+        },
+      ],
+    },        
   ];
   const [activeIndex, setActiveIndex] = useState(0);
   const activeProject = projects[activeIndex];
@@ -174,13 +224,21 @@ export default function ProjectsSection() {
       transition={{ duration: 0.6 }}
     >
       <div className="flex items-end justify-between">
-        <h2 className="text-3xl md:text-4xl font-bold">Projects</h2>
-        <span className="text-sm text-slate-400">Selected work</span>
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Projects</h2>
+        <span className="text-sm text-slate-500">Selected work</span>
       </div>
-      <div className="grid md:grid-cols-[140px_1fr_2fr] gap-6">
-        <div className="hidden md:flex flex-col gap-4 pt-10">
+      <div className="grid md:grid-cols-[180px_1fr_2fr] gap-6">
+        <div className="hidden md:flex flex-col gap-4 pt-6">
+          <div className="text-xs uppercase tracking-[0.35em] text-slate-500">Project List</div>
+          <div className="relative mt-2 flex flex-col gap-4">
+            <div className="absolute left-[18px] top-[-6px] h-[calc(100%+12px)] w-px bg-slate-200" />
           {projects.map((_, idx) => (
-            <div key={`bookmark-${idx}`} className="flex items-center gap-4">
+            <div key={`bookmark-${idx}`} className="relative flex items-center gap-4">
+              <div
+                className={`absolute left-[12px] h-2.5 w-2.5 rounded-full border ${
+                  activeIndex === idx ? 'bg-slate-900 border-slate-900' : 'bg-white border-slate-300'
+                }`}
+              />
               <div
                 className={`relative h-10 w-8 transition-transform duration-400 ${
                   activeIndex === idx ? 'scale-125' : 'scale-95'
@@ -188,45 +246,53 @@ export default function ProjectsSection() {
               >
                 <div
                   className={`absolute inset-0 rounded-l-md ${
-                    activeIndex === idx ? 'bg-teal-400' : 'bg-slate-700'
+                    activeIndex === idx ? 'bg-slate-900' : 'bg-slate-300'
                   }`}
                 />
                 <div className="absolute right-[-10px] top-0 h-full w-3">
                   <div
                     className={`h-full w-0 border-t-[20px] border-b-[20px] border-l-[10px] ${
-                      activeIndex === idx ? 'border-l-teal-400' : 'border-l-slate-700'
+                      activeIndex === idx ? 'border-l-slate-900' : 'border-l-slate-300'
                     } border-t-transparent border-b-transparent`}
                   />
                 </div>
               </div>
               <span
                 className={`text-xs font-semibold tracking-[0.35em] ${
-                  activeIndex === idx ? 'text-teal-300' : 'text-slate-500'
+                  activeIndex === idx ? 'text-slate-900' : 'text-slate-500'
                 }`}
               >
                 {String(idx + 1).padStart(2, '0')}
               </span>
             </div>
           ))}
+          </div>
         </div>
-        <div
-          ref={listRef}
-          className="space-y-4 max-h-[520px] overflow-y-auto pr-2 scroll-smooth snap-y snap-mandatory py-10"
-          style={{
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-          }}
-        >
+        <div className="rounded-2xl border border-slate-200 bg-slate-50/60 p-4">
+          <div className="flex items-center justify-between px-2 pb-3">
+            <div className="text-xs uppercase tracking-[0.35em] text-slate-500">Project Cards</div>
+            <div className="text-xs text-slate-400">Scroll</div>
+          </div>
+          <div
+            ref={listRef}
+            className="space-y-4 max-h-[520px] overflow-y-auto pr-2 scroll-smooth snap-y snap-mandatory pb-6"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+            }}
+          >
           {projects.map((project, idx) => (
             <motion.button
               key={project.title}
               type="button"
               data-project-index={idx}
               onFocus={() => setActiveIndex(idx)}
+              onClick={() => setActiveIndex(idx)}
+              onMouseEnter={() => setActiveIndex(idx)}
               className={`w-full text-left project-card card p-5 transition-all duration-300 group snap-center ${
                 activeIndex === idx
-                  ? 'border border-teal-400/60 bg-teal-500/15 scale-[1.02] shadow-lg shadow-teal-500/20'
-                  : 'opacity-70 scale-[0.98] hover:-translate-y-1'
+                  ? 'border border-slate-300 bg-white scale-[1.02] shadow-lg shadow-slate-200/70'
+                  : 'bg-white/80 border border-slate-200 opacity-85 scale-[0.98] hover:-translate-y-1'
               }`}
               style={{
                 transformOrigin: 'center left',
@@ -242,7 +308,10 @@ export default function ProjectsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
             >
-              <div className="aspect-video rounded-lg bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 border border-white/10 mb-4 overflow-hidden group-hover:border-white/30 transition-colors">
+              <div className="relative aspect-video rounded-lg bg-white border border-slate-200 mb-4 overflow-hidden group-hover:border-slate-300 transition-colors">
+                <div className="absolute left-3 top-3 rounded-full border border-slate-200 bg-white/90 px-2 py-0.5 text-[10px] uppercase tracking-[0.3em] text-slate-500">
+                  {String(idx + 1).padStart(2, '0')}
+                </div>
                 {project.media?.type === 'image' && project.media?.src ? (
                   <img
                     src={project.media.src}
@@ -262,7 +331,7 @@ export default function ProjectsSection() {
                 ) : project.media?.type === 'audio' ? (
                   <div className="h-full w-full flex flex-col items-center justify-center gap-3 text-slate-500 px-4">
                     {project.media.poster ? (
-                      <div className="w-full h-32 rounded-md overflow-hidden border border-white/10 bg-slate-900/50">
+                      <div className="w-full h-32 rounded-md overflow-hidden border border-slate-200 bg-slate-50">
                         <img
                           src={project.media.poster}
                           alt={`${project.title} audio poster`}
@@ -285,48 +354,65 @@ export default function ProjectsSection() {
                     className="h-full w-full object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-slate-600">[Media]</div>
+                  <div className="w-full h-full flex items-center justify-center text-slate-500">[Media]</div>
                 )}
               </div>
-              <div className={`badge text-${project.color}-300`}>{project.tag}</div>
-              <h3 className="mt-2 text-lg font-semibold group-hover:text-teal-300 transition-colors">
+              <div className="badge text-slate-700">{project.tag}</div>
+              <h3 className="mt-2 text-lg font-semibold text-slate-900 group-hover:text-slate-900 transition-colors">
                 {project.title}
               </h3>
-              <p className="mt-2 text-sm text-slate-400 leading-relaxed">{project.desc}</p>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">{project.desc}</p>
             </motion.button>
           ))}
+          </div>
         </div>
 
-        <div className="card p-7 md:p-8">
+        <div className="card p-7 md:p-8 bg-white border border-slate-200 shadow-sm">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <div className={`badge text-${activeProject.color}-300`}>{activeProject.tag}</div>
-              <h3 className="mt-3 text-3xl font-bold">{activeProject.title}</h3>
+              <div className="badge text-slate-700">{activeProject.tag}</div>
+              <h3 className="mt-3 text-3xl font-bold text-slate-900">{activeProject.title}</h3>
             </div>
-            <div className="text-xs uppercase tracking-[0.3em] text-slate-400">Current Project</div>
+            <div className="text-xs uppercase tracking-[0.3em] text-slate-500">Current Project</div>
           </div>
 
-          <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-300">
-            <span className="px-3 py-1 rounded-full border border-white/10 bg-slate-900/50">
+          <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-600">
+            <span className="px-3 py-1 rounded-full border border-slate-200 bg-slate-50">
               기간: {activeProject.period.start} ~ {activeProject.period.end}
             </span>
-            <span className="px-3 py-1 rounded-full border border-white/10 bg-slate-900/50">
+            <span className="px-3 py-1 rounded-full border border-slate-200 bg-slate-50">
               개발인원: {activeProject.teamSize}
             </span>
             <div className="flex items-center gap-2">
+              {activeProject.links?.url && (
+                <a
+                  href={activeProject.links.url}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white hover:border-slate-400 transition-colors"
+                  aria-label="Website"
+                >
+                  <svg className="h-4 w-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13.5 10.5l-3 3m1.5-7.5h6A2.5 2.5 0 0120.5 8.5v6A2.5 2.5 0 0118 17h-6M10.5 13.5h-6A2.5 2.5 0 012 11V5A2.5 2.5 0 014.5 2.5h6"
+                    />
+                  </svg>
+                </a>
+              )}
               {activeProject.links?.github && (
                 <a
                   href={activeProject.links.github}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-slate-900/50 hover:border-teal-400/60 transition-colors"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white hover:border-slate-400 transition-colors"
                   aria-label="GitHub"
                 >
-                  <img src="https://github.com/favicon.ico" alt="GitHub" className="h-4 w-4 opacity-90 invert" />
+                  <img src="https://github.com/favicon.ico" alt="GitHub" className="h-4 w-4 opacity-90" />
                 </a>
               )}
               {activeProject.links?.huggingface && (
                 <a
                   href={activeProject.links.huggingface}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-slate-900/50 hover:border-teal-400/60 transition-colors"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white hover:border-slate-400 transition-colors"
                   aria-label="Hugging Face"
                 >
                   <img src="https://huggingface.co/favicon.ico" alt="Hugging Face" className="h-4 w-4 opacity-80" />
@@ -335,7 +421,7 @@ export default function ProjectsSection() {
               {activeProject.links?.linkedin && (
                 <a
                   href={activeProject.links.linkedin}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-slate-900/50 hover:border-teal-400/60 transition-colors"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white hover:border-slate-400 transition-colors"
                   aria-label="LinkedIn"
                 >
                   <img src="https://linkedin.com/favicon.ico" alt="LinkedIn" className="h-4 w-4 opacity-80" />
@@ -344,10 +430,10 @@ export default function ProjectsSection() {
             </div>
           </div>
 
-          <p className="mt-4 text-slate-300 text-lg leading-relaxed">{activeProject.desc}</p>
+          <p className="mt-4 text-slate-700 text-lg leading-relaxed">{activeProject.desc}</p>
 
           <div className="mt-4">
-            <h4 className="text-xs uppercase tracking-wider text-amber-300 font-semibold">Stack</h4>
+            <h4 className="text-xs uppercase tracking-wider text-slate-700 font-semibold">Stack</h4>
             <div className="mt-2 flex flex-wrap gap-2">
               {activeProject.stack.map((tech) => (
                 <span key={tech} className="chip-enhanced">
@@ -358,44 +444,47 @@ export default function ProjectsSection() {
           </div>
 
           <div className="mt-5">
-            <h4 className="text-xs uppercase tracking-wider text-teal-300 font-semibold">내용</h4>
-            <p className="mt-2 text-sm text-slate-300 leading-relaxed">{activeProject.content}</p>
+            <h4 className="text-xs uppercase tracking-wider text-slate-700 font-semibold">내용</h4>
+            <p className="mt-2 text-sm text-slate-700 leading-relaxed">{activeProject.content}</p>
           </div>
 
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
             <div>
-              <h4 className="text-xs uppercase tracking-wider text-slate-300 font-semibold">역할</h4>
-              <ul className="mt-2 space-y-2 text-sm text-slate-300">
+              <h4 className="text-xs uppercase tracking-wider text-slate-700 font-semibold">역할</h4>
+              <ul className="mt-2 space-y-2 text-sm text-slate-700 rounded-xl border border-slate-200 bg-slate-50/70 p-3">
                 {activeProject.roles.map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span className="text-teal-400">•</span>
+                    <span className="text-slate-900">•</span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h4 className="text-xs uppercase tracking-wider text-slate-300 font-semibold">트러블 슈팅</h4>
+              <h4 className="text-xs uppercase tracking-wider text-slate-700 font-semibold">트러블 슈팅</h4>
               {troubleshootingItems.length > 0 ? (
-                <ul className="mt-2 space-y-3 text-sm text-slate-300">
+                <ul className="mt-2 space-y-3 text-sm text-slate-700">
                   {troubleshootingItems.map((item, index) => (
-                    <li key={typeof item === 'string' ? `${item}-${index}` : item.problem} className="space-y-1">
+                    <li
+                      key={typeof item === 'string' ? `${item}-${index}` : item.problem}
+                      className="rounded-xl border border-slate-200 bg-slate-50/70 p-3"
+                    >
                       {typeof item === 'string' ? (
                         <p>
-                          <span className="text-teal-300">• </span>
+                          <span className="text-slate-900">• </span>
                           {item}
                         </p>
                       ) : (
-                        <>
-                          <p>
-                            <span className="text-slate-400">문제: </span>
-                            {item.problem}
-                          </p>
-                          <p>
-                            <span className="text-teal-300">해결: </span>
-                            {item.solution}
-                          </p>
-                        </>
+                        <div className="grid gap-2">
+                          <div>
+                            <div className="text-[11px] uppercase tracking-[0.25em] text-slate-500">문제</div>
+                            <p className="mt-1 text-slate-800">{item.problem}</p>
+                          </div>
+                          <div>
+                            <div className="text-[11px] uppercase tracking-[0.25em] text-slate-500">해결</div>
+                            <p className="mt-1 text-slate-900">{item.solution}</p>
+                          </div>
+                        </div>
                       )}
                     </li>
                   ))}

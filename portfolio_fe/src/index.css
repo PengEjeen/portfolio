@@ -5,14 +5,14 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
   margin: 0;
   font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
-  background: #020617;
-  color: #e2e8f0;
+  background: #f8fafc;
+  color: #0f172a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -59,8 +59,8 @@ body {
 /* Hero Section Animations */
 /* Hero Section Animations */
 .hero-glow {
-  background: radial-gradient(circle at 30% 30%, rgba(20, 184, 166, 0.4), transparent 50%),
-    radial-gradient(circle at 70% 70%, rgba(249, 115, 22, 0.4), transparent 50%);
+  background: radial-gradient(circle at 30% 30%, rgba(15, 23, 42, 0.12), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(15, 23, 42, 0.08), transparent 50%);
   filter: blur(40px);
   animation: pulseGlow 4s ease-in-out infinite;
 }
@@ -78,7 +78,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #14b8a6 0%, #fbbf24 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -87,7 +87,7 @@ body {
 /* Typing Cursor */
 .typing-cursor {
   animation: blink 0.8s infinite;
-  color: #14b8a6;
+  color: #0f172a;
 }
 
 @keyframes blink {
@@ -130,32 +130,32 @@ body {
 
 /* Enhanced Chips */
 .chip-enhanced {
-  @apply px-4 py-2 text-sm rounded-full bg-gradient-to-r from-teal-500/20 to-amber-500/20 border border-white/20 text-slate-200 hover:border-white/40 transition-colors;
+  @apply px-4 py-2 text-sm rounded-full bg-slate-100 border border-slate-200 text-slate-700 hover:border-slate-300 transition-colors;
 }
 
 /* Social Links */
 .social-link {
-  @apply w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all;
+  @apply w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:border-slate-400 transition-all;
 }
 
 .social-link-large {
-  @apply px-6 py-2 rounded-full bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all text-sm font-medium;
+  @apply px-6 py-2 rounded-full bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-400 transition-all text-sm font-medium;
 }
 
 /* Contact Glow */
 .contact-glow {
-  background: radial-gradient(circle at center, rgba(20, 184, 166, 0.5), rgba(249, 115, 22, 0.5));
+  background: radial-gradient(circle at center, rgba(15, 23, 42, 0.15), rgba(15, 23, 42, 0.05));
   filter: blur(60px);
 }
 
 /* Stat Card Animation */
 .stat-card:hover {
-  box-shadow: 0 0 30px rgba(20, 184, 166, 0.2);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
 /* Project Card Enhancement */
 .project-card:hover {
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
 /* Gradient Wave Animation */
@@ -167,11 +167,29 @@ body {
   left: -50%;
   background: linear-gradient(45deg,
       transparent 0%,
-      rgba(20, 184, 166, 0.1) 25%,
-      rgba(249, 115, 22, 0.1) 50%,
+      rgba(15, 23, 42, 0.05) 25%,
+      rgba(15, 23, 42, 0.04) 50%,
       transparent 75%,
       transparent 100%);
   animation: wave 8s ease-in-out infinite;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl bg-white border border-slate-200 shadow-sm;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 text-[10px] uppercase tracking-[0.25em] rounded-full border border-slate-200 text-slate-600 bg-slate-50;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-slate-900 text-white px-6 py-2 text-sm font-semibold hover:bg-slate-800 transition-colors;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-full border border-slate-300 text-slate-700 px-6 py-2 text-sm font-semibold hover:border-slate-400 hover:text-slate-900 transition-colors;
+  }
 }
 
 @keyframes wave {

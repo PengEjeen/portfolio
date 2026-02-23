@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 
 export default function StatsSection() {
   const stats = [
-    { label: 'Lighthouse 평균', value: '98%', icon: ' ', color: 'amber', desc: '모든 프로젝트 성능 점수' },
-    { label: '배포 완료', value: '12+', icon: '', color: 'teal', desc: '실측 가능한 성과 달성' },
-    { label: '경력', value: '1.9 yrs', icon: '', color: 'purple', desc: '시스템 개발' },
+    { label: 'Lighthouse 평균', value: '98%', icon: ' ', desc: '모든 프로젝트 성능 점수' },
+    { label: '배포 완료', value: '12+', icon: '', desc: '실측 가능한 성과 달성' },
+    { label: '경력', value: '1.9 yrs', icon: '', desc: '시스템 개발' },
   ];
 
   return (
@@ -26,17 +26,15 @@ export default function StatsSection() {
         >
           <div className="flex items-start justify-between">
             <div>
-              <div className={`text-xs uppercase tracking-[0.2em] text-${stat.color}-300 font-semibold`}>
-                {stat.label}
-              </div>
-              <div className="mt-4 text-4xl font-bold group-hover:scale-110 transition-transform">
+              <div className="text-xs uppercase tracking-[0.2em] text-slate-500 font-semibold">{stat.label}</div>
+              <div className="mt-4 text-4xl font-bold text-slate-900 group-hover:scale-110 transition-transform">
                 {stat.value}
               </div>
-              <p className="mt-2 text-slate-400 text-sm">{stat.desc}</p>
+              <p className="mt-2 text-slate-500 text-sm">{stat.desc}</p>
             </div>
-            <span className="text-3xl opacity-50 group-hover:opacity-100 transition-opacity">{stat.icon}</span>
+            <span className="text-3xl opacity-40 group-hover:opacity-100 transition-opacity">{stat.icon}</span>
           </div>
-          <div className={`mt-4 h-1 bg-gradient-to-r from-${stat.color}-500 to-${stat.color}-300 rounded-full`} />
+          <div className="mt-4 h-1 bg-gradient-to-r from-slate-900 to-slate-400 rounded-full" />
         </motion.div>
       ))}
     </motion.section>

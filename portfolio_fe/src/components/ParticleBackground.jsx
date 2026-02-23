@@ -43,7 +43,7 @@ const ParticleBackground = () => {
             }
 
             draw() {
-                ctx.fillStyle = 'rgba(100, 200, 200, 0.6)';
+                ctx.fillStyle = 'rgba(148, 163, 184, 0.45)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -70,7 +70,7 @@ const ParticleBackground = () => {
 
             draw() {
                 const alpha = Math.max(this.life / this.maxLife, 0);
-                ctx.strokeStyle = `rgba(94, 234, 212, ${alpha * 0.8})`;
+                ctx.strokeStyle = `rgba(15, 23, 42, ${alpha * 0.35})`;
                 ctx.lineWidth = 1.2;
                 ctx.beginPath();
                 ctx.moveTo(this.x, this.y);
@@ -98,7 +98,7 @@ const ParticleBackground = () => {
 
                     if (distance < 120) {
                         const opacity = 1 - distance / 120;
-                        ctx.strokeStyle = `rgba(100, 200, 200, ${opacity * 0.2})`;
+                        ctx.strokeStyle = `rgba(148, 163, 184, ${opacity * 0.18})`;
                         ctx.lineWidth = 1;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);

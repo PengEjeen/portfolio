@@ -11,18 +11,18 @@ export default function FeaturedSection() {
       transition={{ duration: 0.6 }}
     >
       <div className="flex items-center gap-3">
-        <h2 className="text-3xl md:text-4xl font-bold">Featured Project</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Featured Project</h2>
         <span className="badge">2025</span>
       </div>
       <motion.div
-        className="card overflow-hidden group cursor-pointer hover:shadow-2xl hover:shadow-teal-500/20 transition-all duration-300"
+        className="card overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300"
         whileHover={{ scale: 1.02 }}
       >
         <div className="grid md:grid-cols-2 gap-8 p-8 md:p-10">
           <div className="space-y-4">
             <span className="badge">HIGHLIGHT</span>
-            <h3 className="text-3xl font-bold">Platform Name</h3>
-            <p className="text-slate-300 text-lg leading-relaxed">여기에 프로젝트에 대한 설명</p>
+            <h3 className="text-3xl font-bold text-slate-900">Platform Name</h3>
+            <p className="text-slate-600 text-lg leading-relaxed">여기에 프로젝트에 대한 설명</p>
 
             <div className="flex flex-wrap gap-2">
               {['django', 'React.js', 'PostgreSQL', 'Redis', 'Stripe'].map((tech) => (
@@ -41,10 +41,9 @@ export default function FeaturedSection() {
             </div>
           </div>
           <div className="relative">
-            <div className="aspect-video rounded-xl bg-gradient-to-br from-teal-500/20 via-slate-800 to-amber-500/20 border border-white/10 group-hover:scale-105 transition-transform overflow-hidden">
+            <div className="aspect-video rounded-xl bg-slate-100 border border-slate-200 group-hover:scale-105 transition-transform overflow-hidden">
               <div className="absolute inset-0 flex items-center justify-center text-slate-500">[Project Screenshot]</div>
             </div>
-            <div className="absolute -inset-4 bg-gradient-to-r from-teal-500/30 to-amber-500/30 blur-2xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
         </div>
       </motion.div>
