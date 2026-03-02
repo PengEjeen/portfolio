@@ -38,8 +38,8 @@ function Home() {
 
       <HeroSection />
 
-      <div className="bg-white px-6 py-10 md:py-16">
-        <div className="mx-auto max-w-6xl space-y-14">
+      <div className="bg-white px-4 py-10 sm:px-6 md:py-16 lg:px-10 2xl:px-14">
+        <div className="mx-auto w-full max-w-[1500px] space-y-14">
           <StatsSection />
           <FeaturedSection />
           <ProjectsSection />

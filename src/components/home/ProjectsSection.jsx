@@ -7,9 +7,61 @@ import culturebankImage from '../../assets/culturebank.png'
 import ashAudio from '../../assets/ash_smple.mp4'
 import ashImage from '../../assets/ash.jpg'
 import kewChloeImage from '../../assets/kewChloe.webp'
+import travleplannerImage from '../../assets/travelplanner.png'
+import p6ixcpeImage from '../../assets/p6ix-cpe.png'
 
 export default function ProjectsSection() {
   const projects = [
+    {
+      title: '공기산정툴',
+      desc: '건축 공정표 작성 및 공기적정성 검토를 지원하는 도구/서비스',
+      tag: 'FULL',
+      period: { start: '2025.11', end: '2026.02' },
+      teamSize: '1명',
+      stack: ['Nginx', 'React + Vite', 'Docker', "django", "Postgresql"],
+      links: {
+        url: 'https://www.p6ix.co.kr/p6ix-cpe/',        
+        // huggingface: 'https://huggingface.co/datasets/NamYeongCho/deep_sort_yolov3'
+      },
+      media: {
+        type: 'image',
+        src: p6ixcpeImage,
+      },
+      content: '국토교통부 기준물량·표준품셈 기반 데이터를 바탕으로 공종별 맞춤 산정 로직을 적용해 적정 공기를 산정하고, 산정 결과를 일정(공정표) 편집기에서 WBS·작업기간·선후행 관계로 수정 연계하며, 공기적정성 검토 근거와 산출 내역을 자동 반영해 검토용 보고서까지 자동출력하는 툴.',
+      roles: ['간트차트 테이블 편집용 프론트앤드 코드 작성', '배포 구성', 'api 서버 제작'],
+      troubleshooting: [
+        {
+          problem: '',
+          solution: '',
+        },
+      ],
+      highlights: ['API 집약', '캐싱 전략', '관측성 개선'],
+    },
+    {
+      title: 'PMISX',
+      desc: '건축 발주처, 시공, 감리 사이의 프로젝트 협업관리(공정/품질/설계/승인/보고 등) 시스템',
+      tag: 'FULL',
+      period: { start: '2025.07', end: '2026.~' },
+      teamSize: '6명',
+      stack: ['Nginx', 'React + Vite', 'Docker', "django", "Postgresql"],
+      links: {
+        url: 'https://www.p6ix.co.kr/p6ix-cpe/',        
+        // huggingface: 'https://huggingface.co/datasets/NamYeongCho/deep_sort_yolov3'
+      },
+      media: {
+        type: 'image',
+        src: p6ixcpeImage,
+      },
+      content: '건축 PMIS는 발주처, 시공, 감리 간 협업을 중심으로 공정/품질/설계/승인/보고 등 핵심 업무를 하나의 시스템에서 통합 관리해, 이슈·요청·검토·결재 흐름과 산출물을 표준 프로세스로 연결하고 최신 상태를 공유·추적할 수 있도록 하며 이력과 데이터를 안전하게 관리해주는 시스템',
+      roles: ['NAS + WEB + DB서버 네트워크 구성', '여러개의 현장에 대한 pmis를 하나의 nginx 게이트웨이로 관리', 'Langgraph사용한 챗봇 제작', 'cctv 스트리밍 및 타임랩스 기능 제작', 'api 서버 제작', '프론트앤드 코드 작성'],
+      troubleshooting: [
+        {
+          problem: 'cctv 스트리밍에서 인코딩에 cpu 너무 많이쓰는 문제 및 영상 저장 용량 너무 큼 문제 있었음',
+          solution: '서버 소프트웨어 인코딩을 제거하고 H.265 인코딩을 카메라 단으로 오프로딩해 서버 CPU 부하를 낮췄으며, 해상도 유지 조건에서 FPS를 조정하고 CRF 값을 상향 튜닝해 저장 용량을 최적화.',
+        },
+      ],
+      highlights: ['API 집약', '캐싱 전략', '관측성 개선'],
+    },    
     {
       title: 'Snapgoal',
       desc: '축구 영상에서 선수 추적 및 하이라이트 영상 추출해주는 사이트',
@@ -38,7 +90,7 @@ export default function ProjectsSection() {
         }
       ],
       highlights: ['API 집약', '캐싱 전략', '관측성 개선'],
-    },    
+    },
     {
       title: 'AssetStore',
       desc: '3D 애니메이션 생성 모델의 제작과 배포 ',
@@ -72,7 +124,7 @@ export default function ProjectsSection() {
       tag: 'AI',
       period: { start: '2024.09', end: '2024.10' },
       teamSize: '3명',
-      stack: ['Go', 'Redis', 'gRPC'],
+      stack: ['Pytorch', 'transformers'],
       links: {
         github: 'https://github.com/PengEjeen/travelplanner_culturebank/blob/master/app.py',
         huggingface: 'https://huggingface.co/NamYeongCho/gemma2-9b-CultureBank-v1',
@@ -120,6 +172,32 @@ export default function ProjectsSection() {
       ],
     },
     {
+      title: 'TravelPlanner',
+      desc: '외교부, 축제정보, 나라 문화정보 등 다양한 정보를 받을 수 있는 여행 일정 편집 툴.',
+      tag: 'BE',
+      period: { start: '2024.03', end: '2024.09' },
+      teamSize: '4명',
+      stack: ['django', 'Vue.js', 'GCP', 'SQLite3', "apache2"],
+      links: {
+        url: '',
+        github: 'https://gitlab.com/chony5093/travelplanner_back',
+        // huggingface: 'https://huggingface.co/NamYeongCho/xtts-v2-ash-ko',
+        // linkedin: '#',
+      },
+      media: {
+        type: 'image',
+        src: travleplannerImage,
+      },
+      content: '여행일정을 생성·편집할 수 있는 여행 플래너 웹사이트를 개발, 외교부의 실시간 안전/여행 정보와 전국 축제 정보를 한눈에 보여주는 페이지를 구성, 요구사항 정의서·설계문서 등 관련 문서를 작성(요구사항/설계문서 링크 기반). 또한 GCP를 통해 서비스를 배포, Apache와 Let’s Encrypt를 적용해 HTTPS 프로토콜을 구축, 마지막으로 해당 프로젝트와 연계된 졸업논문을 작성·정리.',
+      roles: ['일정편집 기능 개발', '보안을 위한 https 프로토콜 적용', 'VM 배포', 'Apache Reverse proxy를 통한 여러 서버 통합관리'],
+      troubleshooting: [
+        {
+          problem: 'Vue.js와 같은 SPA(Single Page Application)는 클라이언트 측 라우팅을 사용하기 때문에, 새 페이지를 열 때 URL이 변경되지만 서버는 이를 정적으로 처리하기 때문에 요청된 경로를 찾지 못하는 문제가 발생.',
+          solution: 'Apache에서 이를 해결하기 위해 html5 History 모드를 지원하도록 설정. vue.js가 history 모드를 사용할 때 모든 라우트를 동일한 html로 리디렉션 해야했음. Apache에서 이를 처리하기 위해 .htaccess파일에 Rewrite룰을 추가했음.',
+        },
+      ],
+    },      
+    {
       title: 'Kew Chloe',
       desc: '시스템과 사람 모두에게 작업 할당이 가능한 프로젝트 협업용 툴',
       tag: 'BE',
@@ -128,7 +206,7 @@ export default function ProjectsSection() {
       stack: ['Pandas', 'apache2', 'GCP', 'FastAPI', "MySQL"],
       links: {
         url: ''
-        // github: '#',
+        // github: '',
         // huggingface: 'https://huggingface.co/NamYeongCho/xtts-v2-ash-ko',
         // linkedin: '#',
       },
@@ -144,33 +222,7 @@ export default function ProjectsSection() {
           solution: '주기적 GC처리, exec/fork 기반 프로세스 관리 방식으로 분류기 실행 구조를 개선해 메모리 중복 최소화로 메모리 자원 약 50% 절감',
         },
       ],
-    },
-    {
-      title: 'TravelPlanner',
-      desc: '외교부, 축제정보, 나라 문화정보 등 다양한 정보를 받을 수 있는 여행 일정 편집 툴.',
-      tag: 'BE',
-      period: { start: '2022.08', end: '2023.08' },
-      teamSize: '5명',
-      stack: ['Pandas', 'apache2', 'GCP', 'FastAPI', "MySQL"],
-      links: {
-        url: ''
-        // github: '#',
-        // huggingface: 'https://huggingface.co/NamYeongCho/xtts-v2-ash-ko',
-        // linkedin: '#',
-      },
-      media: {
-        type: 'image',
-        src: kewChloeImage,
-      },
-      content: '(주)큐티코리아에서 진행. Flow와 같은 협업툴 형태를 기반으로, 업무가 일정한 순서로 진행된다는 가정 아래 표준 작업 절차(SOP) 템플릿을 도입한 프로젝트 협업 시스템. 사용자가 프로젝트/작업을 생성하면 선택한 SOP 단계에 맞춰 하위 작업이 자동으로 생성되고, 반복적·정형화된 단계는 규칙 기반 자동화로 처리되도록 설계. SOP의 생성·수정·삭제와 작업 할당을 통합 관리하는 분배 서버를 구축해 사람과 시스템 모두에게 작업을 배정할 수 있으며, 각 SOP 단계의 작업은 비동기 방식으로 할당·실행되어 운영 효율과 협업 생산성을 높이는 것을 목표로 함.',
-      roles: ['표준작업 절차 기획', '비동기 작업 할당 구조 설계', '자동화 파이프라인 구축', '작업 분배기 제작'],
-      troubleshooting: [
-        {
-          problem: '프로젝트 작업 등록 시 분류 모델 2개를 동시에 사용하는 구조로 인해 프로세스 메모리 사용량이 급증하여 서비스 안정성이 저하됨',
-          solution: '주기적 GC처리, exec/fork 기반 프로세스 관리 방식으로 분류기 실행 구조를 개선해 메모리 중복 최소화로 메모리 자원 약 50% 절감',
-        },
-      ],
-    },        
+    },      
   ];
   const [activeIndex, setActiveIndex] = useState(0);
   const activeProject = projects[activeIndex];
@@ -225,11 +277,10 @@ export default function ProjectsSection() {
     >
       <div className="flex items-end justify-between">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Projects</h2>
-        <span className="text-sm text-slate-500">Selected work</span>
       </div>
       <div className="grid md:grid-cols-[180px_1fr_2fr] gap-6">
         <div className="hidden md:flex flex-col gap-4 pt-6">
-          <div className="text-xs uppercase tracking-[0.35em] text-slate-500">Project List</div>
+          <div className="text-xs uppercase tracking-[0.35em] text-slate-500">List</div>
           <div className="relative mt-2 flex flex-col gap-4">
             <div className="absolute left-[18px] top-[-6px] h-[calc(100%+12px)] w-px bg-slate-200" />
           {projects.map((_, idx) => (
