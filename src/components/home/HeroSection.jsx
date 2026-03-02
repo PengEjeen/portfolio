@@ -117,7 +117,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8 }}
         >
-          <motion.a className="btn-primary btn-lg" href="#featured" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <motion.a className="btn-primary btn-lg" href="#projects" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             프로젝트 보기
           </motion.a>
           <motion.a className="btn-ghost btn-lg" href="#about" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -162,7 +162,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        onClick={() => document.getElementById('featured')?.scrollIntoView({ behavior: 'smooth' })}
+        onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
       >
         <span className="text-sm text-slate-500 uppercase tracking-wider">Scroll Down</span>
         <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}>
