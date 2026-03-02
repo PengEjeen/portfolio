@@ -211,3 +211,61 @@ body {
     transform: translate(-5%, 5%) rotate(5deg);
   }
 }
+
+@keyframes antigravityOrbit {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.antigravity-dots {
+  background-color: #f8fafc;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(100, 116, 139, 0.28) 1px, transparent 1px),
+    radial-gradient(circle at 1px 1px, rgba(37, 99, 235, 0.14) 1px, transparent 1px);
+  background-size: 28px 28px, 56px 56px;
+  background-position: 0 0, 14px 14px;
+}
+
+.antigravity-burst {
+  opacity: 0.5;
+  background:
+    radial-gradient(circle at 72% 52%, rgba(59, 130, 246, 0.24) 0%, rgba(59, 130, 246, 0) 34%),
+    radial-gradient(circle at 72% 52%, rgba(124, 58, 237, 0.2) 0%, rgba(124, 58, 237, 0) 48%),
+    repeating-conic-gradient(from 0deg at 72% 52%,
+      rgba(37, 99, 235, 0.42) 0deg 0.7deg,
+      transparent 0.7deg 8deg);
+  mask-image: radial-gradient(circle at 72% 52%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 50%);
+  -webkit-mask-image: radial-gradient(circle at 72% 52%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 50%);
+  animation: antigravityOrbit 38s linear infinite;
+}
+
+.antigravity-burst-secondary {
+  opacity: 0.22;
+  transform: scale(1.1);
+  animation-duration: 58s;
+  animation-direction: reverse;
+}
+
+@media (max-width: 768px) {
+  .antigravity-dots {
+    background-size: 22px 22px, 44px 44px;
+    background-position: 0 0, 11px 11px;
+  }
+
+  .antigravity-burst {
+    opacity: 0.32;
+    mask-image: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 0.9) 7%, rgba(0, 0, 0, 0) 52%);
+    -webkit-mask-image: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 0.9) 7%, rgba(0, 0, 0, 0) 52%);
+    background:
+      radial-gradient(circle at 50% 45%, rgba(59, 130, 246, 0.18) 0%, rgba(59, 130, 246, 0) 32%),
+      radial-gradient(circle at 50% 45%, rgba(124, 58, 237, 0.14) 0%, rgba(124, 58, 237, 0) 45%),
+      repeating-conic-gradient(from 0deg at 50% 45%,
+        rgba(37, 99, 235, 0.34) 0deg 0.55deg,
+        transparent 0.55deg 10deg);
+  }
+}

@@ -5,6 +5,17 @@ import ParticleBackground from '../ParticleBackground';
 export default function HeroSection() {
   const [typedText, setTypedText] = useState('');
   const fullText = 'Fullstack Engineer';
+  const emailAddress = 'chony5093@gmail.com';
+
+  const handleEmailClick = (event) => {
+    event.preventDefault();
+    const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}`;
+    const openedWindow = window.open(gmailComposeUrl, '_blank', 'noopener,noreferrer');
+
+    if (!openedWindow) {
+      window.location.href = `mailto:${emailAddress}`;
+    }
+  };
 
   useEffect(() => {
     let index = 0;
@@ -21,15 +32,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white p-0">
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <div className="gradient-wave" />
-        <div className="gradient-wave" style={{ animationDelay: '2s' }} />
-        <div className="gradient-wave" style={{ animationDelay: '4s' }} />
-      </div>
-
       <ParticleBackground />
-
-      <div className="hero-glow absolute -inset-6 opacity-50 pointer-events-none" />
 
       <motion.div
         className="relative z-10 w-full max-w-5xl mx-auto text-center px-8 md:px-16"
@@ -68,16 +71,6 @@ export default function HeroSection() {
           >
             BE
           </motion.span>
-          <motion.span
-            className="tech-icon"
-            style={{ top: '30%', right: '15%' }}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 0.3, scale: 1 }}
-            transition={{ delay: 1.1, duration: 0.5 }}
-            whileHover={{ scale: 1.2, opacity: 0.6 }}
-          >
-            +
-          </motion.span>
         </div>
 
         <motion.p
@@ -113,9 +106,9 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
-          뭐를 넣을까용 헤헤
+          문제는 단순하게, 시스템은 견고하게
           <br />
-          사용자 경험과 서버 성능 모두를 고려한 통합 개발을 지향합니다.
+          사용자 경험은 부드럽게, 운영은 안정적으로, 끝까지 책임지는 개발을 지향합니다.
         </motion.p>
 
         <motion.div
@@ -127,8 +120,8 @@ export default function HeroSection() {
           <motion.a className="btn-primary btn-lg" href="#featured" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             프로젝트 보기
           </motion.a>
-          <motion.a className="btn-ghost btn-lg" href="#contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            연락하기
+          <motion.a className="btn-ghost btn-lg" href="#about" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            About Me
           </motion.a>
         </motion.div>
 
@@ -151,20 +144,9 @@ export default function HeroSection() {
             </svg>
           </motion.a>
           <motion.a
-            href="https://linkedin.com/in/pengejeen"
+            href={`mailto:${emailAddress}`}
             className="social-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.2, rotate: 5 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-            </svg>
-          </motion.a>
-          <motion.a
-            href="mailto:hello@peng-ejeen.dev"
-            className="social-link"
+            onClick={handleEmailClick}
             whileHover={{ scale: 1.2, rotate: 5 }}
             whileTap={{ scale: 0.9 }}
           >

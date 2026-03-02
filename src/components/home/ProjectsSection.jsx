@@ -9,9 +9,35 @@ import ashImage from '../../assets/ash.jpg'
 import kewChloeImage from '../../assets/kewChloe.webp'
 import travleplannerImage from '../../assets/travelplanner.png'
 import p6ixcpeImage from '../../assets/p6ix-cpe.png'
+import pmisxImage from '../../assets/pmisx.png'
 
 export default function ProjectsSection() {
   const projects = [
+    {
+      title: 'PMISX',
+      desc: '건축 발주처, 시공, 감리 사이의 프로젝트 협업관리(공정/품질/설계/승인/보고 등) 시스템',
+      tag: 'FULL',
+      period: { start: '2025.07', end: '2026.~' },
+      teamSize: '6명',
+      stack: ['Nginx', 'React + Vite', 'Docker', "django", "Postgresql", "Prometheus", "Elasticsearch", "Grafana"],
+      links: {
+        url: 'https://www.p6ix.co.kr/pmis-x/intro',        
+        // huggingface: 'https://huggingface.co/datasets/NamYeongCho/deep_sort_yolov3'
+      },
+      media: {
+        type: 'image',
+        src: pmisxImage,
+      },
+      content: '건축 발주처, 시공, 감리 간 협업을 중심으로 공정/품질/설계/승인/보고 등 핵심 업무를 하나의 시스템에서 통합 관리해, 이슈·요청·검토·결재 흐름과 산출물을 표준 프로세스로 연결하고 최신 상태를 공유·추적할 수 있도록 하며 이력과 데이터를 안전하게 관리해주는 시스템. 동부건설 1개 현장과 효성중공업 1개 현장에 납품·적용하여 실제 현장 업무에 연계되도록 구축·운영 지원까지 수행.',
+      roles: ['NAS + WEB + DB서버 네트워크 구성', '여러개의 현장에 대한 pmis를 하나의 nginx 게이트웨이로 관리', 'Langgraph사용한 챗봇 제작', 'cctv 스트리밍 및 타임랩스 기능 제작', 'api 서버 제작', '프론트엔드 코드 작성', "elasticsearch와 prometheus를 이용한 모니터링 시스템 구축"],
+      troubleshooting: [
+        {
+          problem: 'cctv 스트리밍에서 인코딩에 cpu 너무 많이쓰는 문제 및 영상 저장 용량 너무 큼 문제 있었음',
+          solution: '서버 소프트웨어 인코딩을 제거하고 H.265 인코딩을 카메라 단으로 오프로딩해 서버 CPU 부하를 30% 낮췄으며, 해상도 유지 조건에서 FPS를 조정하고 CRF 값을 상향 튜닝해 저장 용량을 50% 최적화.',
+        },
+      ],
+      highlights: ['API 집약', '캐싱 전략', '관측성 개선'],
+    },
     {
       title: '공기산정툴',
       desc: '건축 공정표 작성 및 공기적정성 검토를 지원하는 도구/서비스',
@@ -28,7 +54,7 @@ export default function ProjectsSection() {
         src: p6ixcpeImage,
       },
       content: '국토교통부 기준물량·표준품셈 기반 데이터를 바탕으로 공종별 맞춤 산정 로직을 적용해 적정 공기를 산정하고, 산정 결과를 일정(공정표) 편집기에서 WBS·작업기간·선후행 관계로 수정 연계하며, 공기적정성 검토 근거와 산출 내역을 자동 반영해 검토용 보고서까지 자동출력하는 툴.',
-      roles: ['간트차트 테이블 편집용 프론트앤드 코드 작성', '배포 구성', 'api 서버 제작'],
+      roles: ['간트차트 테이블 편집용 프론트엔드 코드 작성', '배포 구성', 'api 서버 제작'],
       troubleshooting: [
         {
           problem: '',
@@ -36,32 +62,7 @@ export default function ProjectsSection() {
         },
       ],
       highlights: ['API 집약', '캐싱 전략', '관측성 개선'],
-    },
-    {
-      title: 'PMISX',
-      desc: '건축 발주처, 시공, 감리 사이의 프로젝트 협업관리(공정/품질/설계/승인/보고 등) 시스템',
-      tag: 'FULL',
-      period: { start: '2025.07', end: '2026.~' },
-      teamSize: '6명',
-      stack: ['Nginx', 'React + Vite', 'Docker', "django", "Postgresql"],
-      links: {
-        url: 'https://www.p6ix.co.kr/p6ix-cpe/',        
-        // huggingface: 'https://huggingface.co/datasets/NamYeongCho/deep_sort_yolov3'
-      },
-      media: {
-        type: 'image',
-        src: p6ixcpeImage,
-      },
-      content: '건축 PMIS는 발주처, 시공, 감리 간 협업을 중심으로 공정/품질/설계/승인/보고 등 핵심 업무를 하나의 시스템에서 통합 관리해, 이슈·요청·검토·결재 흐름과 산출물을 표준 프로세스로 연결하고 최신 상태를 공유·추적할 수 있도록 하며 이력과 데이터를 안전하게 관리해주는 시스템',
-      roles: ['NAS + WEB + DB서버 네트워크 구성', '여러개의 현장에 대한 pmis를 하나의 nginx 게이트웨이로 관리', 'Langgraph사용한 챗봇 제작', 'cctv 스트리밍 및 타임랩스 기능 제작', 'api 서버 제작', '프론트앤드 코드 작성'],
-      troubleshooting: [
-        {
-          problem: 'cctv 스트리밍에서 인코딩에 cpu 너무 많이쓰는 문제 및 영상 저장 용량 너무 큼 문제 있었음',
-          solution: '서버 소프트웨어 인코딩을 제거하고 H.265 인코딩을 카메라 단으로 오프로딩해 서버 CPU 부하를 낮췄으며, 해상도 유지 조건에서 FPS를 조정하고 CRF 값을 상향 튜닝해 저장 용량을 최적화.',
-        },
-      ],
-      highlights: ['API 집약', '캐싱 전략', '관측성 개선'],
-    },    
+    },        
     {
       title: 'Snapgoal',
       desc: '축구 영상에서 선수 추적 및 하이라이트 영상 추출해주는 사이트',
@@ -227,15 +228,37 @@ export default function ProjectsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeProject = projects[activeIndex];
   const listRef = useRef(null);
+  const isProgrammaticScrollRef = useRef(false);
+  const releaseProgrammaticScrollRef = useRef(null);
   const troubleshootingItems = Array.isArray(activeProject.troubleshooting)
     ? activeProject.troubleshooting
     : [];
+
+  const handleSelectProject = (index) => {
+    if (releaseProgrammaticScrollRef.current) {
+      clearTimeout(releaseProgrammaticScrollRef.current);
+    }
+    isProgrammaticScrollRef.current = true;
+    setActiveIndex(index);
+    const listEl = listRef.current;
+    if (!listEl) return;
+
+    const targetCard = listEl.querySelector(`[data-project-index="${index}"]`);
+    if (targetCard instanceof HTMLElement) {
+      targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    releaseProgrammaticScrollRef.current = setTimeout(() => {
+      isProgrammaticScrollRef.current = false;
+    }, 900);
+  };
 
   useEffect(() => {
     const listEl = listRef.current;
     if (!listEl) return;
 
     const handleScroll = () => {
+      if (isProgrammaticScrollRef.current) return;
       const items = listEl.querySelectorAll('[data-project-index]');
       if (!items.length) return;
       let closestIndex = 0;
@@ -263,6 +286,9 @@ export default function ProjectsSection() {
     return () => {
       listEl.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
+      if (releaseProgrammaticScrollRef.current) {
+        clearTimeout(releaseProgrammaticScrollRef.current);
+      }
     };
   }, []);
 
@@ -284,7 +310,13 @@ export default function ProjectsSection() {
           <div className="relative mt-2 flex flex-col gap-4">
             <div className="absolute left-[18px] top-[-6px] h-[calc(100%+12px)] w-px bg-slate-200" />
           {projects.map((_, idx) => (
-            <div key={`bookmark-${idx}`} className="relative flex items-center gap-4">
+            <button
+              key={`bookmark-${idx}`}
+              type="button"
+              onClick={() => handleSelectProject(idx)}
+              className="relative flex items-center gap-4 text-left"
+              aria-label={`${idx + 1}번 프로젝트 보기`}
+            >
               <div
                 className={`absolute left-[12px] h-2.5 w-2.5 rounded-full border ${
                   activeIndex === idx ? 'bg-slate-900 border-slate-900' : 'bg-white border-slate-300'
@@ -315,7 +347,7 @@ export default function ProjectsSection() {
               >
                 {String(idx + 1).padStart(2, '0')}
               </span>
-            </div>
+            </button>
           ))}
           </div>
         </div>
@@ -338,8 +370,7 @@ export default function ProjectsSection() {
               type="button"
               data-project-index={idx}
               onFocus={() => setActiveIndex(idx)}
-              onClick={() => setActiveIndex(idx)}
-              onMouseEnter={() => setActiveIndex(idx)}
+              onClick={() => handleSelectProject(idx)}
               className={`w-full text-left project-card card p-5 transition-all duration-300 group snap-center ${
                 activeIndex === idx
                   ? 'border border-slate-300 bg-white scale-[1.02] shadow-lg shadow-slate-200/70'

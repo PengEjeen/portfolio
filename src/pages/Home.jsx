@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import HeroSection from '../components/home/HeroSection';
 import StatsSection from '../components/home/StatsSection';
-import FeaturedSection from '../components/home/FeaturedSection';
 import ProjectsSection from '../components/home/ProjectsSection';
 import AboutSection from '../components/home/AboutSection';
 import ContactSection from '../components/home/ContactSection';
@@ -41,9 +40,8 @@ function Home() {
       <div className="bg-white px-4 py-10 sm:px-6 md:py-16 lg:px-10 2xl:px-14">
         <div className="mx-auto w-full max-w-[1500px] space-y-14">
           <StatsSection />
-          <FeaturedSection />
-          <ProjectsSection />
           <AboutSection />
+          <ProjectsSection />          
           <ContactSection />
         </div>
       </div>
