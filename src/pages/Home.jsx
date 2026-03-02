@@ -37,8 +37,8 @@ function Home() {
 
       <HeroSection />
 
-      <div className="bg-white px-4 py-10 sm:px-6 md:py-16 lg:px-10 2xl:px-14">
-        <div className="mx-auto w-full max-w-[1500px] space-y-14">
+      <div className="bg-white px-2 py-10 sm:px-3 md:py-16 lg:px-6 2xl:px-8">
+        <div className="mx-auto w-full max-w-[1760px] space-y-14">
           <StatsSection />
           <AboutSection />
           <ProjectsSection />          

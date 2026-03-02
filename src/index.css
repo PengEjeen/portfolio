@@ -251,6 +251,15 @@ body {
   animation-direction: reverse;
 }
 
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .antigravity-dots {
     background-size: 22px 22px, 44px 44px;

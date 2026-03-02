@@ -163,7 +163,7 @@ export default function ProjectsSection() {
         src: ashAudio,
         poster: ashImage
       },
-      content: '프로젝트 개요/핵심 기능/성과를 여기에 적어주세요.',
+      content: 'XTTS-v2를 기반으로 LoL 애쉬 캐릭터의 한국어 TTS를 만들기 위해 데이터 파이프라인부터 파인튜닝까지 단독으로 수행. 유튜브 음성 수집 → 구간 컷/노이즈 제거/무음 제거 → 학습용 샘플 구성의 흐름으로 데이터 품질을 우선 최적화했고, 초기 학습에서 나타난 단어 반복 현상은 문장 후반 무음이 반복 트리거로 작동하는 케이스로 판단하여 무음 제거 + 생성 길이 제한으로 해결.',
       roles: ['유튜브 데이터 수집', '데이터 전처리', '모델 학습'],
       troubleshooting: [
         {
@@ -304,7 +304,7 @@ export default function ProjectsSection() {
       <div className="flex items-end justify-between">
         <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Projects</h2>
       </div>
-      <div className="grid md:grid-cols-[180px_1fr_2fr] gap-6">
+      <div className="grid md:grid-cols-[120px_1.35fr_1.65fr] gap-6">
         <div className="hidden md:flex flex-col gap-4 pt-6">
           <div className="text-xs uppercase tracking-[0.35em] text-slate-500">List</div>
           <div className="relative mt-2 flex flex-col gap-4">
@@ -351,18 +351,14 @@ export default function ProjectsSection() {
           ))}
           </div>
         </div>
-        <div className="rounded-2xl border border-slate-200 bg-slate-50/60 p-4">
+        <div className="rounded-2xl border border-slate-200 bg-slate-50/60 p-4 md:h-[820px] flex flex-col">
           <div className="flex items-center justify-between px-2 pb-3">
             <div className="text-xs uppercase tracking-[0.35em] text-slate-500">Project Cards</div>
             <div className="text-xs text-slate-400">Scroll</div>
           </div>
           <div
             ref={listRef}
-            className="space-y-4 max-h-[520px] overflow-y-auto pr-2 scroll-smooth snap-y snap-mandatory pb-6"
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-            }}
+            className="hide-scrollbar space-y-4 flex-1 min-h-0 overflow-y-auto pr-2 scroll-smooth snap-y snap-proximity pb-10"
           >
           {projects.map((project, idx) => (
             <motion.button
@@ -371,7 +367,7 @@ export default function ProjectsSection() {
               data-project-index={idx}
               onFocus={() => setActiveIndex(idx)}
               onClick={() => handleSelectProject(idx)}
-              className={`w-full text-left project-card card p-5 transition-all duration-300 group snap-center ${
+              className={`w-full text-left project-card card p-5 transition-all duration-300 group snap-start ${
                 activeIndex === idx
                   ? 'border border-slate-300 bg-white scale-[1.02] shadow-lg shadow-slate-200/70'
                   : 'bg-white/80 border border-slate-200 opacity-85 scale-[0.98] hover:-translate-y-1'
@@ -390,7 +386,7 @@ export default function ProjectsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
             >
-              <div className="relative aspect-video rounded-lg bg-white border border-slate-200 mb-4 overflow-hidden group-hover:border-slate-300 transition-colors">
+              <div className="relative h-56 md:h-64 rounded-lg bg-white border border-slate-200 mb-4 overflow-hidden group-hover:border-slate-300 transition-colors">
                 <div className="absolute left-3 top-3 rounded-full border border-slate-200 bg-white/90 px-2 py-0.5 text-[10px] uppercase tracking-[0.3em] text-slate-500">
                   {String(idx + 1).padStart(2, '0')}
                 </div>
@@ -398,13 +394,13 @@ export default function ProjectsSection() {
                   <img
                     src={project.media.src}
                     alt={`${project.title} screenshot`}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-top"
                   />
                 ) : project.media?.type === 'video' && project.media?.src ? (
                   <video
                     src={project.media.src}
                     poster={project.media.poster}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-top"
                     autoPlay
                     loop
                     muted
@@ -417,7 +413,7 @@ export default function ProjectsSection() {
                         <img
                           src={project.media.poster}
                           alt={`${project.title} audio poster`}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover object-top"
                         />
                       </div>
                     ) : (
@@ -433,7 +429,7 @@ export default function ProjectsSection() {
                   <img
                     src={project.image}
                     alt={`${project.title} screenshot`}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-top"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-slate-500">[Media]</div>
@@ -443,13 +439,15 @@ export default function ProjectsSection() {
               <h3 className="mt-2 text-lg font-semibold text-slate-900 group-hover:text-slate-900 transition-colors">
                 {project.title}
               </h3>
-              <p className="mt-2 text-sm text-slate-600 leading-relaxed">{project.desc}</p>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed max-h-[3.2rem] overflow-hidden">
+                {project.desc}
+              </p>
             </motion.button>
           ))}
           </div>
         </div>
 
-        <div className="card p-7 md:p-8 bg-white border border-slate-200 shadow-sm">
+        <div className="card p-7 md:p-8 bg-white border border-slate-200 shadow-sm md:h-[820px] flex flex-col">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <div className="badge text-slate-700">{activeProject.tag}</div>
@@ -512,68 +510,70 @@ export default function ProjectsSection() {
             </div>
           </div>
 
-          <p className="mt-4 text-slate-700 text-lg leading-relaxed">{activeProject.desc}</p>
+          <div className="hide-scrollbar mt-4 flex-1 min-h-0 overflow-y-auto pr-1">
+            <p className="text-slate-700 text-lg leading-relaxed">{activeProject.desc}</p>
 
-          <div className="mt-4">
-            <h4 className="text-xs uppercase tracking-wider text-slate-700 font-semibold">Stack</h4>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {activeProject.stack.map((tech) => (
-                <span key={tech} className="chip-enhanced">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-5">
-            <h4 className="text-xs uppercase tracking-wider text-slate-700 font-semibold">내용</h4>
-            <p className="mt-2 text-sm text-slate-700 leading-relaxed">{activeProject.content}</p>
-          </div>
-
-          <div className="mt-6 grid gap-5 lg:grid-cols-2">
-            <div>
-              <h4 className="text-xs uppercase tracking-wider text-slate-700 font-semibold">역할</h4>
-              <ul className="mt-2 space-y-2 text-sm text-slate-700 rounded-xl border border-slate-200 bg-slate-50/70 p-3">
-                {activeProject.roles.map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span className="text-slate-900">•</span>
-                    <span>{item}</span>
-                  </li>
+            <div className="mt-4">
+              <h4 className="text-xs uppercase tracking-wider text-slate-700 font-semibold">Stack</h4>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {activeProject.stack.map((tech) => (
+                  <span key={tech} className="chip-enhanced">
+                    {tech}
+                  </span>
                 ))}
-              </ul>
+              </div>
             </div>
-            <div>
-              <h4 className="text-xs uppercase tracking-wider text-slate-700 font-semibold">트러블 슈팅</h4>
-              {troubleshootingItems.length > 0 ? (
-                <ul className="mt-2 space-y-3 text-sm text-slate-700">
-                  {troubleshootingItems.map((item, index) => (
-                    <li
-                      key={typeof item === 'string' ? `${item}-${index}` : item.problem}
-                      className="rounded-xl border border-slate-200 bg-slate-50/70 p-3"
-                    >
-                      {typeof item === 'string' ? (
-                        <p>
-                          <span className="text-slate-900">• </span>
-                          {item}
-                        </p>
-                      ) : (
-                        <div className="grid gap-2">
-                          <div>
-                            <div className="text-[11px] uppercase tracking-[0.25em] text-slate-500">문제</div>
-                            <p className="mt-1 text-slate-800">{item.problem}</p>
-                          </div>
-                          <div>
-                            <div className="text-[11px] uppercase tracking-[0.25em] text-slate-500">해결</div>
-                            <p className="mt-1 text-slate-900">{item.solution}</p>
-                          </div>
-                        </div>
-                      )}
+
+            <div className="mt-5">
+              <h4 className="text-xs uppercase tracking-wider text-slate-700 font-semibold">내용</h4>
+              <p className="mt-2 text-sm text-slate-700 leading-relaxed">{activeProject.content}</p>
+            </div>
+
+            <div className="mt-6 grid gap-5 lg:grid-cols-2">
+              <div>
+                <h4 className="text-xs uppercase tracking-wider text-slate-700 font-semibold">역할</h4>
+                <ul className="mt-2 space-y-2 text-sm text-slate-700 rounded-xl border border-slate-200 bg-slate-50/70 p-3">
+                  {activeProject.roles.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="text-slate-900">•</span>
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-              ) : (
-                <p className="mt-2 text-sm text-slate-500">트러블슈팅 항목을 추가해주세요.</p>
-              )}
+              </div>
+              <div>
+                <h4 className="text-xs uppercase tracking-wider text-slate-700 font-semibold">트러블 슈팅</h4>
+                {troubleshootingItems.length > 0 ? (
+                  <ul className="mt-2 space-y-3 text-sm text-slate-700">
+                    {troubleshootingItems.map((item, index) => (
+                      <li
+                        key={typeof item === 'string' ? `${item}-${index}` : item.problem}
+                        className="rounded-xl border border-slate-200 bg-slate-50/70 p-3"
+                      >
+                        {typeof item === 'string' ? (
+                          <p>
+                            <span className="text-slate-900">• </span>
+                            {item}
+                          </p>
+                        ) : (
+                          <div className="grid gap-2">
+                            <div>
+                              <div className="text-[11px] uppercase tracking-[0.25em] text-slate-500">문제</div>
+                              <p className="mt-1 text-slate-800">{item.problem}</p>
+                            </div>
+                            <div>
+                              <div className="text-[11px] uppercase tracking-[0.25em] text-slate-500">해결</div>
+                              <p className="mt-1 text-slate-900">{item.solution}</p>
+                            </div>
+                          </div>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-2 text-sm text-slate-500">트러블슈팅 항목을 추가해주세요.</p>
+                )}
+              </div>
             </div>
           </div>
         </div>
